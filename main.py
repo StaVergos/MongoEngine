@@ -51,21 +51,58 @@ class BlogPost(DynamicDocument):
 
 # Save a document
 
-user = User(
-    username = "JoeDoe",
-    email = "jdoe@gmail.com",
-    password = os.urandom(16),
-    age = "30",
-    bio = "My name is Joe",
-    admin = True
-).save()
+#user = User(
+#    username = "JoeDoe",
+#    email = "jdoe@gmail.com",
+#    password = os.urandom(16),
+#    age = "30",
+#    bio = "My name is Joe",
+#    admin = True
+#).save()
 
-BlogPost(
-    title = "My first blog post",
-    content = "Learning PyMongo",
-    author = user,
-    tags=["Python", "MongoDB", "MongoEngine"],
-    category = "MongoDB"
-).save()
+#BlogPost(
+#    title = "My first blog post",
+#    content = "Learning PyMongo",
+#    author = user,
+#    tags=["Python", "MongoDB", "MongoEngine"],
+#    category = "MongoDB"
+#).save()
 
 print("Done")
+
+user = User(
+    username = "Peter Pan",
+    email = "ppan@gmail.com",
+    password = os.urandom(16),
+    age = "30",
+    bio = "Gimme a kiss"
+)
+
+user.admin = True
+user.registered = True
+
+#try:
+#    user.save()
+#except NotUniqueError:
+#    print("Name or password is not unique")
+
+# Querying the database
+
+#users = User.objects()
+
+#for user in users:
+#    print(user.username, user.email, user.bio)
+
+# Filtering
+
+#admin_users = User.objects(admin=True, registered=True)
+
+#for a in admin_users:
+#    print(a.username)
+
+try:
+    john_doe = User.objects(username="JoeDoe").get()
+    print(john_doe.username, john_doe.email)
+except DoesNotExist:
+    print("user not found")
+
