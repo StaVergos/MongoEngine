@@ -100,9 +100,25 @@ user.registered = True
 #for a in admin_users:
 #    print(a.username)
 
-try:
-    john_doe = User.objects(username="JoeDoe").get()
-    print(john_doe.username, john_doe.email)
-except DoesNotExist:
-    print("user not found")
+#try:
+#    john_doe = User.objects(username="JoeDoe").get()
+#    print(john_doe.username, john_doe.email)
+#except DoesNotExist:
+#    print("user not found")
 
+#john_doe = User.objects(username="JoeDoe").get()
+
+#posts = BlogPost.objects(author=john_doe)
+
+#for post in posts:
+#    print(post.author.username)
+
+# Query operators
+#Less than & greater than
+
+young_users = User.objects(age__lt=31)
+
+for user in young_users:
+    print(user.username, user.age)
+
+#age_gte for greater than
